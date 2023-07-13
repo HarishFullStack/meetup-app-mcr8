@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  padding: 5rem;
 }
 
 .App-logo {
@@ -35,4 +36,35 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.container{
+  position: relative;
+  text-align: center;
+  cursor: pointer;
+}
+
+img{
+  width: 100% !important;
+}
+
+.event-type{
+  position: absolute;
+  bottom: 270px;
+  left: 20px;
+}
+
+.badge{
+  margin: 0.5rem;
+}
+
+.profile{
+  width: 18% !important;
+  height: 18%;
+  border-radius: 25%;
+}
+
+button{
+  padding-left: 5rem !important;
+  padding-right: 5rem !important;
 }
