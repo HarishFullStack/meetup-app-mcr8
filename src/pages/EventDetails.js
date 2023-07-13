@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 
 import {meetupData} from '../data/Meetup';
 import { Modal } from "react-bootstrap";
 
 export function EventDetails(){
+
+    const navigate = useNavigate();
 
     const {eventId} = useParams();
     const [event, setEvent] = useState();
@@ -26,9 +28,11 @@ export function EventDetails(){
 
     return(
         event &&    <div>
-            <h2>{event.title}</h2>
-            <img src = {event.eventThumbnail} alt={event.title}></img>
-            <h4>Details</h4>
+            <div className="d-flex justify-content-center"><i className="fa fa-arrow-left back-button" aria-hidden="true"  onClick={() => navigate("/")}></i><h2>{event.title}</h2></div>
+            <div className="d-flex">
+            <div className="thumbnail w-50 justify-content-start">
+                <img src = {event.eventThumbnail} alt={event.title}></img>
+                <h4>Details</h4>
             <p>{event.eventDescription}</p>
             <h4>Additional Information</h4>
             <b>Dress code: </b><span>{event.additionalInformation.dressCode}</span>
@@ -41,6 +45,9 @@ export function EventDetails(){
                     )
                 })
             }
+            </div>
+            <div className="event-details w-50">
+            
 
             <div className="card" style={{width: "36rem"}}>
                 <div className="card-body">
@@ -52,23 +59,26 @@ export function EventDetails(){
 
             <h4>Speakers: ({event.speakers.length})</h4>
 
-            {event.speakers.map((z) => {
-                return (
-                    <div className='d-inline'>
-                    <div className="card" style={{width: "20rem"}}>
-                        <div className="card-body">
-                            <img src={z.image} className="card-img-top profile" alt={z.name}/>
-                                <p><b className="card-title">{z.name}</b></p>
-                                <p className="card-title">{z.designation}</p>
-                            </div>
-                    </div>
-                    </div>
-                )
-            })}
+            <div className='d-flex justify-content-center'>
+
+                {event.speakers.map((z) => {
+                    return (
+                        <div className="card" style={{width: "15rem"}}>
+                            <div className="card-body">
+                                <img src={z.image} className="card-img-top profile" alt={z.name}/>
+                                    <p><b className="card-title">{z.name}</b></p>
+                                    <p className="card-title">{z.designation}</p>
+                                </div>
+                        </div>
+                    )
+                })}
+            </div>
+
 
             <button className="btn btn-danger" onClick={() => setShowModal(true)}>{event.isRSVPed ? 'Already RSVPed' : 'RSVP'}</button>            
-
-            <Modal show={showModal} onHide={() => setShowModal(false)}  size="lg">
+            </div>
+            </div>
+            <Modal show={showModal} onHide={() => setShowModal(false)}  size="md">
                 <Modal.Header>
                     <Modal.Title>
                         Complete Your RSVP
@@ -76,7 +86,7 @@ export function EventDetails(){
                 </Modal.Header>
                 <Modal.Body>
                     <div>
-                        <div>Fill in your personal details</div>
+                        <div>*Fill in your personal details</div>
                         <label>Name:</label>
                     <input type="text col-md-6" className="form-control"/>
                     <label>Email:</label>

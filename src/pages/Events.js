@@ -8,7 +8,6 @@ export function Events(){
     return(
         <div>
             <h2>Meetup Events</h2>
-            <div className='continents'>
                 <div className='d-flex'>
                     {meetupData.meetups.map((x) => {
                         return(
@@ -26,6 +25,5 @@ export function Events(){
                     })}
                 </div>
             </div>
-        </div>
     )
 } 

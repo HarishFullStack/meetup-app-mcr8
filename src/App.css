@@ -50,7 +50,7 @@ img{
 
 .event-type{
   position: absolute;
-  bottom: 270px;
+  bottom: 250px;
   left: 20px;
 }
 
@@ -60,11 +60,46 @@ img{
 
 .profile{
   width: 18% !important;
-  height: 18%;
-  border-radius: 25%;
+    border-radius: 25%;
 }
 
 button{
   padding-left: 5rem !important;
   padding-right: 5rem !important;
+  margin-top: 10rem;
+}
+
+.thumbnail{
+  max-width: 50% !important;
+  align-self: self-start;
+  margin: 10rem;
+  text-align: center;
+}
+
+.event-details{
+  max-width: 50% !important;
+  align-self: right ;
+  margin: 10rem;
+  text-align: center;
+
+}
+
+.w-100{
+  width: 100% !important;
+}
+
+h4{
+  margin-top: 3rem;
+}
+
+.modal-footer{
+  display: flex;
+  flex-flow: column;
+}
+
+.back-button{
+  width: fit-content;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
 }
